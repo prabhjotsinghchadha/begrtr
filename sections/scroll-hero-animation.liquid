@@ -1,0 +1,83 @@
+{% comment %}
+  Scroll-Driven Frame-by-Frame Hero Animation
+  Displays 58 WebP frames (shoe_0001.webp to shoe_0058.webp) controlled by scroll
+{% endcomment %}
+
+{{ 'scroll-hero-animation.js' | asset_url | script_tag }}
+
+<div class="scroll-hero-animation" id="scroll-hero-{{ section.id }}">
+  <div class="scroll-hero-animation__container">
+    <img 
+      class="scroll-hero-animation__image" 
+      src="{{ 'shoe_0001.webp' | asset_url }}"
+      alt="{{ section.settings.alt_text | default: 'Shoe animation' }}"
+      loading="eager"
+      data-scroll-hero-image
+      data-total-frames="58"
+      data-first-frame="1"
+    />
+  </div>
+</div>
+
+<style>
+  .scroll-hero-animation {
+    position: relative;
+    width: 100%;
+    height: 200vh; /* Allows comfortable scrolling through all frames */
+    background-color: #000000;
+    overflow: hidden;
+  }
+
+  .scroll-hero-animation__container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+  }
+
+  .scroll-hero-animation__image {
+    max-width: 100%;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    margin: 0 auto;
+    /* Prevent layout shifts - image maintains natural aspect ratio */
+  }
+
+  /* Mobile optimizations */
+  @media screen and (max-width: 749px) {
+    .scroll-hero-animation__image {
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Scroll Hero Animation",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Image alt text",
+      "default": "Shoe animation"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scroll Hero Animation"
+    }
+  ]
+}
+{% endschema %}
+
