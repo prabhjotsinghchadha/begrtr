@@ -286,18 +286,10 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
-    },
-    "scroll_hero_animation_j6rE4B": {
-      "type": "scroll-hero-animation",
-      "name": "Scroll Hero Animation",
-      "settings": {
-        "alt_text": "Shoe animation"
-      }
     }
   },
   "order": [
     "hero_jVaWmY",
-    "product_list_fa6P9H",
-    "scroll_hero_animation_j6rE4B"
+    "product_list_fa6P9H"
   ]
 }
